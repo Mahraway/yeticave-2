@@ -48,7 +48,11 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'home' => 'main/index'
+                'home' => 'main/index',
+                'signup' => 'main/signup',
+                'login' => 'main/login',
+                'logout' => 'main/logout',
+                'create' => 'lots/create'
             ],
         ],
     ],

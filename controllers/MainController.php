@@ -59,7 +59,8 @@ class MainController extends \yii\web\Controller
                 $user->password = \Yii::$app->getSecurity()->generatePasswordHash($signupForm->password);
 
                 if ($user->save()) {
-                    $this->redirect('/pages/all-lots.html');
+                    \Yii::$app->user->login($user);
+                    $this->goHome();
                 }
             }
         }

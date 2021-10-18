@@ -1,11 +1,10 @@
 <?php
 
-namespace app\models;
+namespace app\models\forms;
 
 use app\models\Users;
 use yii\base\Model;
 use yii\web\NotFoundHttpException;
-use function Sodium\add;
 
 class LoginForm extends Model
 {

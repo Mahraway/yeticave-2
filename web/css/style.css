@@ -258,20 +258,21 @@ main.container {
 }
 
 .user-menu__logged {
+  display: flex;
   color: #879296;
   line-height: 22px;
+  align-items: baseline;
+}
+
+.profile {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #4e9ba4;
 }
 
 .user-menu__logged p {
   font-weight: 700;
   margin: 0;
-}
-
-.user-menu__logged a {
-  color: #879296;
-  font-size: 13px;
-  font-weight: 400;
-  float: left;
 }
 
 .user-menu__logged a:last-child {
