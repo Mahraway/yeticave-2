@@ -1,0 +1,89 @@
+<!---->
+<!--<form class="form container form--invalid" action="https://echo.htmlacademy.ru" method="post" autocomplete="off"> form-->
+<!--    --invalid -->
+<!--<h2>Регистрация нового аккаунта</h2>-->
+<!--<div class="form__item"> form__item--invalid -->
+<!--    <label for="email">E-mail <sup>*</sup></label>-->
+<!--    <input id="email" type="text" name="email" placeholder="Введите e-mail">-->
+<!--    <span class="form__error">Введите e-mail</span>-->
+<!--</div>-->
+<!--<div class="form__item">-->
+<!--    <label for="password">Пароль <sup>*</sup></label>-->
+<!--    <input id="password" type="password" name="password" placeholder="Введите пароль">-->
+<!--    <span class="form__error">Введите пароль</span>-->
+<!--</div>-->
+<!--<div class="form__item">-->
+<!--    <label for="name">Имя <sup>*</sup></label>-->
+<!--    <input id="name" type="text" name="name" placeholder="Введите имя">-->
+<!--    <span class="form__error">Введите имя</span>-->
+<!--</div>-->
+<!--<div class="form__item">-->
+<!--    <label for="message">Контактные данные <sup>*</sup></label>-->
+<!--    <textarea id="message" name="message" placeholder="Напишите как с вами связаться"></textarea>-->
+<!--    <span class="form__error">Напишите как с вами связаться</span>-->
+<!--</div>-->
+<!--<span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>-->
+<!--<button type="submit" class="button">Зарегистрироваться</button>-->
+<!--<a class="text-link" href="#">Уже есть аккаунт</a>-->
+<!--</form>-->
+
+
+
+<?php use yii\bootstrap4\Html;
+$form = \yii\bootstrap4\ActiveForm::begin([
+        'method' => 'post',
+        'options' => [
+                'class' => 'form container',
+        ],
+
+
+]) ?>
+<h2>Регистрация нового аккаунта</h2>
+    <?=$form->field($signupForm, 'email', [
+            'options' => [
+                    'class' => 'mt-4',
+            ],
+        'inputOptions' => [
+            'style' => 'width: 300px'
+        ]
+    ]) ?>
+    <?=$form->field($signupForm, 'password', [
+        'options' => [
+            'class' => 'mt-2'
+        ],
+        'inputOptions' => [
+            'style' => 'width: 300px',
+            'type' => 'password',
+        ]
+    ]) ?>
+    <?=$form->field($signupForm, 'name', [
+        'options' => [
+            'class' => 'mt-2'
+        ],
+        'inputOptions' => [
+            'style' => 'width: 300px'
+        ]
+    ]) ?>
+    <?=$form->field($signupForm, 'contacts', [
+        'options' => [
+            'class' => 'mt-2'
+        ],
+        'inputOptions' => [
+            'style' => 'width: 345px'
+        ]
+    ])->textarea([
+                'placeholder' => 'Напишите как с вами связаться',
+                'rows' => 5
+    ]) ?>
+<?= Html::submitButton('Зарегистрироваться', [
+        'class' => 'button mt-3'
+])?>
+
+<?= Html::a('Уже есть аккаунт',
+        \yii\helpers\Url::to(['main/login']),
+        ['class' => 'button mt-3'])
+?>
+
+
+
+<?php \yii\bootstrap4\ActiveForm::end() ?>
