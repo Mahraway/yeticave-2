@@ -4,7 +4,6 @@ namespace app\models\forms;
 
 use app\models\Users;
 use yii\base\Model;
-use yii\web\NotFoundHttpException;
 
 class LoginForm extends Model
 {

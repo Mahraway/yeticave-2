@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\LoginForm;
-use app\models\SignupForm;
+use app\models\forms\LoginForm;
+use app\models\forms\SignupForm;
 use app\models\Users;
 
 class MainController extends \yii\web\Controller

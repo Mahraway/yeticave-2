@@ -68,7 +68,7 @@ use yii\helpers\Url;
                 <?php endif; ?>
             </nav>
         </div>
-        <?php if (\Yii::$app->controller->id != 'main'): ?>
+        <?php if (\Yii::$app->controller->id . \Yii::$app->controller->action->id != 'mainindex'): ?>
             <?= $this->render('_menu'); ?>
         <?php endif; ?>
     </header>

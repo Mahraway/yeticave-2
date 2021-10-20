@@ -13,7 +13,7 @@ use Yii;
  * @property int $category_id
  * @property string $name
  * @property string $description
- * @property string $image
+ * @property int|null $image_id
  * @property int $price
  * @property int $step
  * @property string $dt_add
@@ -21,6 +21,7 @@ use Yii;
  *
  * @property Bets[] $bets
  * @property Categories $category
+ * @property Images $image
  * @property Users $user
  * @property Users $winner
  */
@@ -40,14 +41,15 @@ class Lots extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'category_id', 'name', 'description', 'image', 'price', 'step', 'dt_add', 'dt_end'], 'required'],
-            [['user_id', 'winner_id', 'category_id', 'price', 'step'], 'integer'],
+            [['user_id', 'category_id', 'name', 'description', 'price', 'step', 'dt_add', 'dt_end'], 'required'],
+            [['user_id', 'winner_id', 'category_id', 'image_id', 'price', 'step'], 'integer'],
             [['dt_add', 'dt_end'], 'safe'],
-            [['name', 'image'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 1000],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['winner_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['winner_id' => 'id']],
+            [['image_id'], 'exist', 'skipOnError' => true, 'targetClass' => Images::className(), 'targetAttribute' => ['image_id' => 'id']],
         ];
     }
 
@@ -63,7 +65,7 @@ class Lots extends \yii\db\ActiveRecord
             'category_id' => 'Category ID',
             'name' => 'Name',
             'description' => 'Description',
-            'image' => 'Image',
+            'image_id' => 'Image ID',
             'price' => 'Price',
             'step' => 'Step',
             'dt_add' => 'Dt Add',
@@ -89,6 +91,16 @@ class Lots extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Categories::className(), ['id' => 'category_id']);
+    }
+
+    /**
+     * Gets query for [[Image]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getImage()
+    {
+        return $this->hasOne(Images::className(), ['id' => 'image_id']);
     }
 
     /**

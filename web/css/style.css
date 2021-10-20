@@ -115,7 +115,7 @@ input.visually-hidden {
 }
 
 main.container {
-  padding-top: 10px;
+  padding-top: 40px;
   margin-bottom: 35px;
 }
 
@@ -1246,4 +1246,8 @@ input:invalid .form__error{
 div.required label.control-label:after {
   content: " *";
   color: red;
+}
+
+.form-control option{
+  color: #1d2124;
 }
